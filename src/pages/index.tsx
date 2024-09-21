@@ -1,6 +1,7 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -9,23 +10,27 @@ export default function SignUpPage() {
     e.preventDefault();
     // await signIn("worldcoin"); // when worldcoin is the only provider
 
-    router.push("/setup1")
+    router.push("/setup1");
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <h1 className="text-7xl font-black text-black mb-10">Veri-Connect</h1>
-      <p className="text-sm text-gray-500 text-center mb-20">
+      <h1 className="text-7xl font-black text-black mb-20">Veri-Connect</h1>
+      <p className="text-sm text-gray-500 text-center mb-10">
         Would you like to network with people in the crypto industry? <br />
         Connect with great individuals based on the verification of your assets.
       </p>
+
+      <DynamicWidget />
       <button
         onClick={onSign}
         className="bg-black text-white p-3 rounded-lg flex items-center justify-center w-full max-w-md hover:bg-gray-800 transition-colors"
       >
         <Image
-          src="https://www.worldcoin.org/_next/image?url=%2Fassets%2Fworld-id%2Ficon%2Fworld-id-white.svg&w=256&q=75"
+          src=""
           alt="World ID icon"
+          width={24}
+          height={24}
           className="h-6 w-6 mr-2"
         />
         Continue with World ID
@@ -33,3 +38,4 @@ export default function SignUpPage() {
     </div>
   );
 }
+

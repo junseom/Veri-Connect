@@ -26,3 +26,18 @@ body {
     text-wrap: balance;
   }
 }
+
+.dynamic-shadow-dom {
+  --dynamic-connect-button-background: #ffffff;
+  --dynamic-connect-button-color: #000000;
+  --dynamic-connect-button-border: 1px solid #000000;
+  --dynamic-connect-button-background-hover: #f7fafc;
+  --dynamic-connect-button-width: 448px;  /* Set width */
+  --dynamic-connect-button-height: 50px;  /* Set height */
+  
+  /* Adjust padding for internal space */
+  --dynamic-connect-button-padding: 10px 20px;  /* Vertical and horizontal padding */
+  
+  /* Adjust font size */
+  --dynamic-connect-button-font-size: 16px;
+}

@@ -25,7 +25,7 @@ const Card = ({
       alt={`${name}'s profile`}
       width={300}
       height={300}
-      className="w-full object-cover rounded-xl border border-black border-rounded-xl"
+      className="w-full object-cover rounded-xl border border-black"
     />
 
     <div className="absolute bottom-1 flex p-2 space-x-3">
