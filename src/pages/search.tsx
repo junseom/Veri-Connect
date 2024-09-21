@@ -53,20 +53,20 @@ const Search = () => {
         Meet Crypto People!
       </h1>
 
-      <div className="relative flex flex-col items-center justify-center w-full mb-6">
+      <div className="relative flex flex-col max-w-md items-center justify-center w-full mb-6">
         <Namecard profile={currentProfile} />
       </div>
 
-      <div className="grid grid-cols-2 w-full gap-4 z-50">
+      <div className="max-w-md grid grid-cols-2 w-full gap-4 z-50">
         <button
-          className="bg-white text-md px-4 h-12 rounded-xl border border-black w-full"
+          className="bg-white text-sm px-2 h-10 rounded-xl border border-black w-full"
           onClick={handleNextProfile}
         >
           Meet other people 👀
         </button>
         <button
           onClick={onChat}
-          className="bg-black text-white text-md px-4 h-12 rounded-xl w-full"
+          className="bg-black text-white text-sm px-2 h-10 rounded-xl w-full"
         >
           Connect 🤝
         </button>

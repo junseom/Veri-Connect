@@ -63,7 +63,7 @@ export const BadgeDetails = ({
         <GoChevronLeft onClick={onBack} size={24} color="#909090" />
       </div>
 
-      <div className="flex flex-col flex-1 w-full ">
+      <div className="flex flex-col flex-1 w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center text-gray-500">
           Mint Your Badge
         </h1>
@@ -127,7 +127,7 @@ export const BadgeDetails = ({
 
         <div className="w-full px-6">
           <button
-            className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
+            className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
             onClick={mint}
           >
             Mint
