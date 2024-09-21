@@ -8,11 +8,7 @@ const Setup3 = () => {
   const [mintedBadges, setMintedBadges] = useState<string[]>([]);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(true); // 모달 상태 관리
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const handleBadgeClick = (badge: string) => {
     setSelectedBadge(badge);
@@ -43,6 +39,48 @@ const Setup3 = () => {
     e.preventDefault();
     router.push("/search");
   };
+
+  const Modal = ({ onClose }: { onClose: () => void }) => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-10 rounded-xl shadow-lg max-w-sm w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div className="flex flex-col items-center">
+          <Image
+            src="/assets/DALLE.png"
+            alt="Badge Image"
+            width={100}
+            height={100}
+            className="mb-4"
+          />
+          <h2 className="text-xl font-bold">You got world ID Badge!</h2>
+          <p className="text-xs text-gray-500 mb-6">
+            You verified humanity with World ID.
+          </p>
+          <button onClick={onClose} className="w-full bg-black text-white px-4 py-2 rounded-full">
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
   const renderStep0 = () => (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -114,47 +152,7 @@ const Setup3 = () => {
         </button>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-10 rounded-xl shadow-lg max-w-md w-full relative">
-            <button
-              onClick={handleModalClose}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <div className="flex flex-col items-center">
-              <Image
-                src="/assets/DALLE.png"
-                alt="Badge Image"
-                width={100}
-                height={100}
-                className="mb-4"
-              />
-              <h2 className="text-xl font-bold">You got world ID Badge!</h2>
-              <p className="text-xs text-gray-500 mb-6">
-                You verified humanity with World ID.
-              </p>
-              <button onClick={handleModalClose} className="w-full bg-black text-white px-4 py-2 rounded-full">
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 
@@ -260,7 +258,7 @@ const Setup3 = () => {
 
   const renderStep3 = () => (
     <div className="relative flex flex-col items-center justify-center min-h-screen max-w-xl bg-white mx-auto">
-      <h1 className="text-4xl font-bold text-black mt-12 mb-12 z-10">
+      <h1 className="text-4xl font-bold text-black mb-6 z-10">
         Your profile is complete
       </h1>
 
@@ -268,8 +266,8 @@ const Setup3 = () => {
         <Image
           src="/assets/DALLE.png"
           alt="DALLE"
-          width={300}
-          height={300}
+          width={500}
+          height={800}
           className="object-contain w-full h-auto mb-4 rounded-lg"
         />
         <div className="absolute bottom-4 flex p-2 space-x-3">
