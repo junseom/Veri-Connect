@@ -11,7 +11,6 @@ const Setup3 = () => {
   const [mintedBadges, setMintedBadges] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-
   const onSelect = (badge: string) => {
     setSelectedBadge(badge);
     setStep(1);
@@ -23,17 +22,18 @@ const Setup3 = () => {
     setSelectedBadge(null);
   };
 
-
-  if (step === 0 || !selectedBadge) {
-    return (
-      <BadgeList
-        onSelect={onSelect}
-        isSelected={(badge: string) => mintedBadges.includes(badge)}
-        onConfirm={() => setStep(3)}
-        isModalOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-      />
-    );
+  if (!selectedBadge) {
+    if (step === 3) return <Completed />;
+    else
+      return (
+        <BadgeList
+          onSelect={onSelect}
+          isSelected={(badge: string) => mintedBadges.includes(badge)}
+          onConfirm={() => setStep(3)}
+          isModalOpen={isModalOpen}
+          closeModal={() => setIsModalOpen(false)}
+        />
+      );
   } else if (step === 1) {
     return (
       <BadgeDetails
@@ -44,9 +44,8 @@ const Setup3 = () => {
     );
   } else if (step === 2) {
     return <BadgeMinted badge={selectedBadge} onSave={onSave} />;
-  } else {
-    return <Completed />;
   }
+  return null;
 };
 
 export default Setup3;
