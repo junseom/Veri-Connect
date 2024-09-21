@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function SignUpPage() {
@@ -22,7 +23,7 @@ export default function SignUpPage() {
         onClick={onSign}
         className="bg-black text-white p-3 rounded-lg flex items-center justify-center w-full max-w-md hover:bg-gray-800 transition-colors"
       >
-        <img
+        <Image
           src="https://www.worldcoin.org/_next/image?url=%2Fassets%2Fworld-id%2Ficon%2Fworld-id-white.svg&w=256&q=75"
           alt="World ID icon"
           className="h-6 w-6 mr-2"

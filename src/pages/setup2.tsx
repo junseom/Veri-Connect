@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Setup2 = () => {
   const router = useRouter();
-  const handleNext = (e: any) => {
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.push("/setup3");
   };
   const [selectedHobbies, setSelectedHobbies] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
-  const [selectedImage, setSelectedImage] = useState<File | null>(null); // 빼도 될 듯
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleHobbyClick = (hobby: string) => {
@@ -27,7 +27,6 @@ const Setup2 = () => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
@@ -61,7 +60,7 @@ const Setup2 = () => {
               id="upload"
             />
             {imagePreview ? (
-              <img
+              <Image
                 src={imagePreview}
                 alt="Selected Preview"
                 className="w-full h-full object-cover rounded-lg"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Setup3 = () => {
   const [step, setStep] = useState(0); // 0: 배지 선택(3), 1: 배지 민팅(3-1), 2: 민팅 완료(3-2)
@@ -7,6 +8,11 @@ const Setup3 = () => {
   const [mintedBadges, setMintedBadges] = useState<string[]>([]);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(true); // 모달 상태 관리
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   const handleBadgeClick = (badge: string) => {
     setSelectedBadge(badge);
@@ -33,7 +39,7 @@ const Setup3 = () => {
     document.getElementById("upload")?.click();
   };
 
-  const handleNavigateToSearch = (e: any) => {
+  const handleNavigateToSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.push("/search");
   };
@@ -107,6 +113,48 @@ const Setup3 = () => {
           Next
         </button>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-10 rounded-xl shadow-lg max-w-md w-full relative">
+            <button
+              onClick={handleModalClose}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <div className="flex flex-col items-center">
+              <Image
+                src="/assets/DALLE.png"
+                alt="Badge Image"
+                width={100}
+                height={100}
+                className="mb-4"
+              />
+              <h2 className="text-xl font-bold">You got world ID Badge!</h2>
+              <p className="text-xs text-gray-500 mb-6">
+                You verified humanity with World ID.
+              </p>
+              <button onClick={handleModalClose} className="w-full bg-black text-white px-4 py-2 rounded-full">
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -140,7 +188,7 @@ const Setup3 = () => {
             id="upload"
           />
           {imagePreview ? (
-            <img
+            <Image
               src={imagePreview}
               alt="Selected Preview"
               className="w-full h-full object-cover rounded-lg"
@@ -216,10 +264,12 @@ const Setup3 = () => {
         Your profile is complete
       </h1>
 
-      <div className="relative max-w-sm z-10">
-        <img
-          src="src\assets\DALLE.png"
+      <div className="relative max-w-md z-10">
+        <Image
+          src="/assets/DALLE.png"
           alt="DALLE"
+          width={300}
+          height={300}
           className="object-contain w-full h-auto mb-4 rounded-lg"
         />
         <div className="absolute bottom-4 flex p-2 space-x-3">
@@ -227,21 +277,21 @@ const Setup3 = () => {
             <div className="text-lg font-bold mb-2">Ohsho • 26</div>
 
             <div className="flex space-x-2 mb-2">
-              <img src="" alt="icon" className="w-6 h-6" />
-              <img src="" alt="icon" className="w-6 h-6" />
-              <img src="" alt="icon" className="w-6 h-6" />
+              <Image src="" alt="icon" className="w-6 h-6" />
+              <Image src="" alt="icon" className="w-6 h-6" />
+              <Image src="" alt="icon" className="w-6 h-6" />
             </div>
-            <div className="flex space-x-3">
-              <span>DeFi</span>
-              <span>NFT</span>
-              <span>Trading</span>
+            <div className="flex space-x-3 text-sm">
+              <span className="border p-2 rounded-full">DeFi</span>
+              <span className="border p-2 rounded-full">NFT</span>
+              <span className="border p-2 rounded-full">Trading</span>
             </div>
           </div>
 
           <div className="flex items-center bg-black bg-opacity-50 border border-gray-300 text-white p-4 rounded-2xl z-20">
             <div className="mb-2 text-sm">
-              Hello, I'm a project manager from Korea, and I'm a fan of Shohei
-              Ohtani.
+              Hello, I&rsquo;m a project manager from Korea, and I&rsquo;m a fan
+              of Shohei Ohtani.
             </div>
           </div>
         </div>
@@ -253,7 +303,7 @@ const Setup3 = () => {
         onClick={handleNavigateToSearch}
         className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
       >
-        Let's Meet People! 👀
+        Let&rsquo;s Meet People! 👀
       </button>
     </div>
   );

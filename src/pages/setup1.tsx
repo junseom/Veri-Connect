@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 function Setup1() {
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
@@ -10,7 +9,7 @@ function Setup1() {
     setSelectedGender(gender);
   };
 
-  const handleNext = (e: any) => {
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.push("/setup2");
   };
