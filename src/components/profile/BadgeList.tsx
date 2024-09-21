@@ -34,11 +34,13 @@ export const BadgeList = ({
               className="border border-gray-300 rounded-lg p-4 flex items-center space-x-4"
               onClick={() => onSelect(badge.title)}
             >
-              <div
-                className={`w-5 h-5 rounded-full ${
-                  isSelected(badge.title) ? "bg-black" : "bg-gray-200"
-                }`}
-              ></div>
+              <img
+                src={`${badge.image}${
+                  isSelected(badge.title) ? "color" : "black"
+                }.png`}
+                alt={badge.title}
+                className="w-12 h-12"
+              />
               <div>
                 <h3 className="font-bold text-lg">{badge.title}</h3>
                 <p className="text-gray-500 text-sm">{badge.description}</p>
