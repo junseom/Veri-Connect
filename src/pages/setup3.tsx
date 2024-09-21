@@ -33,7 +33,8 @@ const Setup3 = () => {
     document.getElementById("upload")?.click();
   };
 
-  const handleNavigateToSearch = () => {
+  const handleNavigateToSearch = (e: any) => {
+    e.preventDefault();
     router.push("/search");
   };
 
@@ -226,9 +227,9 @@ const Setup3 = () => {
             <div className="text-lg font-bold mb-2">Ohsho • 26</div>
 
             <div className="flex space-x-2 mb-2">
-              <img src='' alt="icon" className="w-6 h-6" />
-              <img src='' alt="icon" className="w-6 h-6" />
-              <img src='' alt="icon" className="w-6 h-6" />
+              <img src="" alt="icon" className="w-6 h-6" />
+              <img src="" alt="icon" className="w-6 h-6" />
+              <img src="" alt="icon" className="w-6 h-6" />
             </div>
             <div className="flex space-x-3">
               <span>DeFi</span>

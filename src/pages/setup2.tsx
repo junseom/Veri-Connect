@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 
 const Setup2 = () => {
   const router = useRouter();
-  const handleNext = () => {
-    router.push("/Setup3");
+  const handleNext = (e: any) => {
+    e.preventDefault();
+    router.push("/setup3");
   };
   const [selectedHobbies, setSelectedHobbies] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string | null>(null);

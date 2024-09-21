@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Setup1() {
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
@@ -9,8 +10,9 @@ function Setup1() {
     setSelectedGender(gender);
   };
 
-  const handleNext = () => {
-    router.push('/Setup2');
+  const handleNext = (e: any) => {
+    e.preventDefault();
+    router.push("/setup2");
   };
 
   return (
@@ -21,7 +23,9 @@ function Setup1() {
       <h1 className="text-3xl font-bold mb-8 text-center">Make your Profile</h1>
       <form className="w-full max-w-md">
         <div className="mb-4">
-          <label className="block text-gray-500 mb-2">What’s your Nickname?</label>
+          <label className="block text-gray-500 mb-2">
+            What’s your Nickname?
+          </label>
           <input
             type="text"
             className="w-full p-3 border rounded-lg"
@@ -29,7 +33,9 @@ function Setup1() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-500 mb-2">What’s your affiliation?</label>
+          <label className="block text-gray-500 mb-2">
+            What’s your affiliation?
+          </label>
           <input
             type="text"
             className="w-full p-3 border rounded-lg"
@@ -41,33 +47,33 @@ function Setup1() {
           <div className="flex space-x-4">
             <button
               type="button"
-              onClick={() => handleGenderSelect('Woman')}
+              onClick={() => handleGenderSelect("Woman")}
               className={`flex-1 p-3 border rounded-lg ${
-                selectedGender === 'Woman'
-                  ? 'border-black text-black'
-                  : 'border-gray-300 text-gray-500'
+                selectedGender === "Woman"
+                  ? "border-black text-black"
+                  : "border-gray-300 text-gray-500"
               }`}
             >
               Woman
             </button>
             <button
               type="button"
-              onClick={() => handleGenderSelect('Man')}
+              onClick={() => handleGenderSelect("Man")}
               className={`flex-1 p-3 border rounded-lg ${
-                selectedGender === 'Man'
-                  ? 'border-black text-black'
-                  : 'border-gray-300 text-gray-500'
+                selectedGender === "Man"
+                  ? "border-black text-black"
+                  : "border-gray-300 text-gray-500"
               }`}
             >
               Man
             </button>
             <button
               type="button"
-              onClick={() => handleGenderSelect('Nonbinary')}
+              onClick={() => handleGenderSelect("Nonbinary")}
               className={`flex-1 p-3 border rounded-lg ${
-                selectedGender === 'Nonbinary'
-                  ? 'border-black text-black'
-                  : 'border-gray-300 text-gray-500'
+                selectedGender === "Nonbinary"
+                  ? "border-black text-black"
+                  : "border-gray-300 text-gray-500"
               }`}
             >
               Nonbinary
@@ -75,17 +81,21 @@ function Setup1() {
           </div>
         </div>
         <div className="mb-6">
-          <label className="block text-gray-500 mb-2">Introduce yourself in 180 characters</label>
+          <label className="block text-gray-500 mb-2">
+            Introduce yourself in 180 characters
+          </label>
           <input
             type="text"
             className="w-full p-3 border rounded-lg placeholder:text-xs"
             placeholder="Hello, I'm a project manager from Korea, and a big fan of Shohei Ohtani."
           />
         </div>
-        <button 
+
+        <button
           type="submit"
           onClick={handleNext}
-          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors">
+          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
+        >
           Next
         </button>
       </form>
