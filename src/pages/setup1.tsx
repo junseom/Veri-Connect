@@ -5,7 +5,7 @@ import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 function Setup1() {
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
   const router = useRouter();
-  const {setShowAuthFlow} = useDynamicContext();
+  const { setShowAuthFlow, handleLogOut, primaryWallet } = useDynamicContext();
 
   const handleGenderSelect = (gender: string) => {
     setSelectedGender(gender);
@@ -31,9 +31,21 @@ function Setup1() {
           <label className="block text-gray-500 mb-2">
             Connect your wallet
           </label>
-          <button className="w-full p-3 border rounded-lg" onClick={handleWalletConnect}>
-            Connect with Dynamic
-          </button>
+          {primaryWallet ? (
+            <button
+              className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              onClick={handleLogOut}
+            >
+              Log out
+            </button>
+          ) : (
+            <button
+              className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              onClick={handleWalletConnect}
+            >
+              Connect with Dynamic
+            </button>
+          )}
         </div>
         <div className="mb-4">
           <label className="block text-gray-500 mb-2">
