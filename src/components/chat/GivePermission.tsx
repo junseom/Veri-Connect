@@ -1,20 +1,25 @@
 import CONTRACTS from "@/configs";
 import { VeriConnect__factory } from "@/typechain";
-
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
+import { getSigner } from "@dynamic-labs/ethers-v6";
 interface GivePermissionMsgProps {
     friendAddr: string
 }
 export const GivePermissionMsg = ({friendAddr}: GivePermissionMsgProps) => {
+  const { primaryWallet} = useDynamicContext();
   const onGivePermission = async () => {
+    if(!primaryWallet) return;
+    const signer = await getSigner(primaryWallet);
+    console.log(signer);
     // TODO: Signer
-    const vericonnect = VeriConnect__factory.connect(CONTRACTS.VERICONNECT);
+    const vericonnect = VeriConnect__factory.connect(CONTRACTS.VERICONNECT, signer);
     await vericonnect.giveMintPermission(friendAddr);
   };
 
   return (
     <div>
       <p className="text-left">
-        Please sign on your wallet to give permission to your friend.
+        Please sign on your wallet to mint your name card NFT to your friend.
       </p>
 
       <button
