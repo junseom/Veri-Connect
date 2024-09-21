@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { mintBadge } from "./mint.badge";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
+import { getSigner } from "@dynamic-labs/ethers-v6";
 
 interface BadgeDetailsProps {
   selectedBadge: string;
@@ -12,6 +14,8 @@ export const BadgeDetails = ({
   onBack,
   onMint,
 }: BadgeDetailsProps) => {
+  const { primaryWallet } = useDynamicContext();
+
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -30,9 +34,17 @@ export const BadgeDetails = ({
     setImagePreview(null);
   };
 
-  const mint = () => {
-    // TODO
-    // mintBadge(selectedBadge, );
+  const mint = async () => {
+    if (!primaryWallet) return;
+    const signer = await getSigner(primaryWallet);
+    console.log(signer);
+
+    // TODO: 준성!!!!!
+    const res = await mintBadge(selectedBadge, signer);
+    if(res.txHash){
+      // todo: https://amoy.polygonscan.com/tx/0x48f751551673c0a839a0f4b2584ac09e370bcccba2103ff6760d6b72ef789988
+      //res.txHash
+    }
     onMint();
   };
 

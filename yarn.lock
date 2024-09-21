@@ -763,6 +763,14 @@
     eventemitter3 "5.0.1"
     stream "0.0.2"
 
+"@dynamic-labs/ethers-v6@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@dynamic-labs/ethers-v6/-/ethers-v6-3.1.1.tgz#20db4485f930a3b035628b44aa4be19e12c85e29"
+  integrity sha512-784p9nktQ6+1l9PY45gkbHb/djYo3whFowl3j0OtFAPhHtqsGWfOE6LNCPFyJNcnzzfKEod1i+VKDa1SM+KcBw==
+  dependencies:
+    "@dynamic-labs/ethereum-core" "3.1.1"
+    "@dynamic-labs/wallet-connector-core" "3.1.1"
+
 "@dynamic-labs/iconic@3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@dynamic-labs/iconic/-/iconic-3.1.1.tgz#d1db27729d72b541265541f5364d3b17f57d25e9"
