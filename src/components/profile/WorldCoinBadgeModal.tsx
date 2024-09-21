@@ -26,7 +26,7 @@ export const WorldCoinBadgeModal = ({ onClose }: WorldCoinBadgeModalProps) => (
       </button>
       <div className="flex flex-col items-center">
         <img
-          src="/assets/DALLE.png"
+          src="/assets/badge/worldid_color.png"
           alt="Badge Image"
           width={100}
           height={100}
