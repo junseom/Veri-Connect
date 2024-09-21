@@ -380,19 +380,6 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "friend",
-        type: "address",
-      },
-    ],
-    name: "giveMintPermission",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "account",
         type: "address",
       },
@@ -416,43 +403,14 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "cardId",
-        type: "uint256",
-      },
-      {
         internalType: "address",
         name: "recipient",
         type: "address",
       },
     ],
-    name: "mintCard",
+    name: "mintCardToFriend",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "mintingPermissions",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {

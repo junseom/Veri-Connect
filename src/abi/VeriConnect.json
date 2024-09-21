@@ -330,6 +330,30 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "cardIdToOwners",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "name": "cardOwners",
@@ -344,26 +368,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
     "name": "getMyCards",
     "outputs": [
       {
-        "internalType": "uint256[]",
+        "internalType": "address[]",
         "name": "",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getMyOwnedCardIds",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -373,13 +390,19 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "friend",
+        "name": "user",
         "type": "address"
       }
     ],
-    "name": "giveMintPermission",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "getMyOwnedCardIds",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -409,43 +432,14 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "cardId",
-        "type": "uint256"
-      },
-      {
         "internalType": "address",
         "name": "recipient",
         "type": "address"
       }
     ],
-    "name": "mintCard",
+    "name": "mintCardToFriend",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "mintingPermissions",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -467,14 +461,9 @@
         "internalType": "address",
         "name": "",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
-    "name": "ownerToCardIds",
+    "name": "ownerToCardId",
     "outputs": [
       {
         "internalType": "uint256",

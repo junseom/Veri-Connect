@@ -2,15 +2,12 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-
-
 export default function SignUpPage() {
   const router = useRouter();
 
   const onSign = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // const res = await signIn("worldcoin"); // when worldcoin is the only provider
-
+    const res = await signIn("worldcoin"); // when worldcoin is the only provider
     router.push("/setup1");
   };
 
