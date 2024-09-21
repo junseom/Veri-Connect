@@ -28,7 +28,7 @@ export default function SignUpPage() {
         <Image
           width={24}
           height={24}
-          src="https://www.worldcoin.org/_next/image?url=%2Fassets%2Fworld-id%2Ficon%2Fworld-id-white.svg&w=256&q=75"
+          src="/assets/worldcoinlogo.png"
           alt="World ID icon"
           className="mr-2"
         />
