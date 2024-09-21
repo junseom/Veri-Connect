@@ -45,7 +45,7 @@ const Search = () => {
   const currentProfile = PROFILES[currentProfileIndex];
 
   const onChat = () => {
-    router.push(`/chat/0xAA289325d1afc4AA040281b10dD9f10A8560D296`);
+    router.push(`/chat/0x22E4Ee2e606716d9CCB0e987e77b3c9b10c8D45E`);
   };
   return currentProfile ? (
     <div className="relative flex flex-col items-center justify-center min-h-screen max-w-xl mx-auto">
