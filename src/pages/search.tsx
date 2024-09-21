@@ -1,23 +1,6 @@
 import { useState } from "react";
-import Image from "next/image";
 import PROFILES, { Profile } from "@/configs/profiles";
 import { Namecard } from "@/components/Namecard";
-
-// const Card = (profile: Profile) => (
-//   <div className="relative w-full max-w-md mx-auto rounded-xl shadow-lg text-white overflow-hidden">
-//     <Image
-//       src="/assets/DALLE.png"
-//       alt={`${profile.name}'s profile`}
-//       width={300}
-//       height={300}
-//       className="w-full object-cover rounded-xl border border-black"
-//     />
-
-//     <div className="absolute bottom-1 flex p-2 space-x-3">
-//       <Namecard profile={profile} />
-//     </div>
-//   </div>
-// );
 
 const Modal = ({ onClose }: { onClose: () => void }) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -69,14 +52,14 @@ const Search = () => {
         <Namecard profile={currentProfile} />
       </div>
 
-      <div className="grid grid-cols-2 w-full max-w-md gap-4 z-50">
+      <div className="grid grid-cols-2 w-full gap-4 z-50">
         <button
-          className="bg-white text-sm p-2 rounded-xl border border-black w-full"
+          className="bg-white text-md px-4 h-12 rounded-xl border border-black w-full"
           onClick={handleNextProfile}
         >
           Meet other people 👀
         </button>
-        <button className="bg-black text-white text-sm p-2 rounded-xl w-full">
+        <button className="bg-black text-white text-md px-4 h-12 rounded-xl w-full">
           Connect 🤝
         </button>
       </div>

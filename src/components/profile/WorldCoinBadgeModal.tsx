@@ -4,7 +4,7 @@ interface WorldCoinBadgeModalProps {
 
 export const WorldCoinBadgeModal = ({ onClose }: WorldCoinBadgeModalProps) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div className="bg-white p-10 rounded-xl shadow-lg max-w-sm w-full relative">
+    <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full relative">
       <button
         onClick={onClose}
         className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
@@ -24,7 +24,7 @@ export const WorldCoinBadgeModal = ({ onClose }: WorldCoinBadgeModalProps) => (
           />
         </svg>
       </button>
-      <div className="flex flex-col items-center">
+      <div className="mt-6 flex flex-col items-center">
         <img
           src="/assets/DALLE.png"
           alt="Badge Image"
@@ -33,12 +33,12 @@ export const WorldCoinBadgeModal = ({ onClose }: WorldCoinBadgeModalProps) => (
           className="mb-4"
         />
         <h2 className="text-xl font-bold">You got world ID Badge!</h2>
-        <p className="text-xs text-gray-500 mb-6">
+        <p className="mt-1 text-xs text-gray-500 mb-6">
           You verified humanity with World ID.
         </p>
         <button
           onClick={onClose}
-          className="w-full bg-black text-white px-4 py-2 rounded-full"
+          className="w-full bg-black text-white px-4 py-3 rounded-full"
         >
           OK
         </button>

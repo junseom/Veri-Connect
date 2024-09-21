@@ -17,11 +17,13 @@ export const Completed = () => {
         Your profile is complete
       </h1>
 
-      <Namecard profile={ME} />
+      <div className="max-w-md mx-auto">
+        <Namecard profile={ME} />
+      </div>
 
       <button
         onClick={handleNavigateToSearch}
-        className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
+        className="mt-8 w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
       >
         Let&rsquo;s Meet People! 👀
       </button>
