@@ -1,4 +1,4 @@
-import { GivePermissionMsg } from "./GivePermission";
+import { SendNamecardMsg } from "./GivePermission";
 
 export interface MSG {
   from: "me" | "you";
@@ -24,7 +24,7 @@ export const Messages = ({ friendAddr, messages }: MessagesProps) => {
             }`}
           >
             {msg.text === "namecard" ? (
-              <GivePermissionMsg friendAddr={friendAddr} />
+              <SendNamecardMsg friendAddr={friendAddr} />
             ) : (
               <div>{msg.text}</div>
             )}
