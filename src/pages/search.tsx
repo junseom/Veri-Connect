@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PROFILES, { Profile } from "@/configs/profiles";
 import { Namecard } from "@/components/Namecard";
+import { useRouter } from "next/router";
 
 const Modal = ({ onClose }: { onClose: () => void }) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -33,6 +34,7 @@ const Modal = ({ onClose }: { onClose: () => void }) => (
 const Search = () => {
   const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const router = useRouter();
 
   const handleNextProfile = () => {
     setCurrentProfileIndex((prevIndex) =>
@@ -42,6 +44,9 @@ const Search = () => {
 
   const currentProfile = PROFILES[currentProfileIndex];
 
+  const onChat = () => {
+    router.push(`/chat/0xAA289325d1afc4AA040281b10dD9f10A8560D296`);
+  };
   return currentProfile ? (
     <div className="relative flex flex-col items-center justify-center min-h-screen max-w-xl mx-auto">
       <h1 className="text-4xl font-bold text-black mb-6 z-10">
@@ -59,7 +64,10 @@ const Search = () => {
         >
           Meet other people 👀
         </button>
-        <button className="bg-black text-white text-md px-4 h-12 rounded-xl w-full">
+        <button
+          onClick={onChat}
+          className="bg-black text-white text-md px-4 h-12 rounded-xl w-full"
+        >
           Connect 🤝
         </button>
       </div>
