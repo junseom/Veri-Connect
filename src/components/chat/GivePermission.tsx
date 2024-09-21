@@ -10,8 +10,6 @@ export const GivePermissionMsg = ({friendAddr}: GivePermissionMsgProps) => {
   const onGivePermission = async () => {
     if(!primaryWallet) return;
     const signer = await getSigner(primaryWallet);
-    console.log(signer);
-    // TODO: Signer
     const vericonnect = VeriConnect__factory.connect(CONTRACTS.VERICONNECT, signer);
     await vericonnect.giveMintPermission(friendAddr);
   };

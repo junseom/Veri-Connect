@@ -3,8 +3,9 @@ import { mintBadge } from "./mint.badge";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { getSigner } from "@dynamic-labs/ethers-v6";
 import { GoChevronLeft } from "react-icons/go";
-import Container from "../layout/Container";
 import { Loading } from "../layout/Loading";
+import Container from "../layout/Container";
+import BADGES from "./badges.config";
 
 interface BadgeDetailsProps {
   selectedBadge: string;
@@ -54,6 +55,8 @@ export const BadgeDetails = ({
     }
   };
 
+  const badge = BADGES.find((b) => b.title === selectedBadge)!;
+
   return (
     <Container>
       <div className="w-full h-16 flex items-center px-4">
@@ -66,8 +69,9 @@ export const BadgeDetails = ({
         </h1>
 
         <div className="flex flex-col items-center">
-          <div className="w-40 h-40 bg-gray-300 rounded-full mb-4"></div>
-          <h2 className="text-lg font-bold mb-6">{selectedBadge}</h2>
+          <img className="w-40 h-40" src={badge.image + "color.png"} />
+
+          <h2 className="text-lg font-bold my-6">{selectedBadge}</h2>
         </div>
 
         {selectedBadge === "World ID Badge" ? null : (

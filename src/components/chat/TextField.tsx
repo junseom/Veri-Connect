@@ -5,8 +5,6 @@ interface TextFieldProps {
   send: (text: string) => void;
 }
 export const TextField = ({ send }: TextFieldProps) => {
-  // TODO
-  const myAddress = "0x4947B01A9c99174aCE4a10cd555d84119D5F49a9";
 
   const [text, setText] = useState("");
   const onChageText = (e: React.ChangeEvent<HTMLInputElement>) => {

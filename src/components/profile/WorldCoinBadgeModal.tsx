@@ -32,8 +32,9 @@ export const WorldCoinBadgeModal = ({ onClose }: WorldCoinBadgeModalProps) => (
           height={100}
           className="mb-4"
         />
-        <h2 className="text-xl font-bold">You got world ID Badge!</h2>
-        <p className="mt-1 text-xs text-gray-500 mb-6">
+        <h2 className="text-xl font-bold text-center">You are eligible to</h2>
+        <h2 className="text-xl font-bold text-center">Claim world ID Badge!</h2>
+        <p className="mt-2 text-sm text-gray-500 mb-6">
           You verified humanity with World ID.
         </p>
         <button

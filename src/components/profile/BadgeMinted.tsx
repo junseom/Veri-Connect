@@ -1,23 +1,22 @@
+import BADGES from "./badges.config";
+
 interface BadgeMintedProps {
   badge: string;
   txHash: string;
   onSave: () => void;
 }
 export const BadgeMinted = ({ badge, txHash, onSave }: BadgeMintedProps) => {
+  const badgeItem = BADGES.find((b) => b.title === badge)!;
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
       <h1 className="text-2xl font-bold mb-4 text-center text-gray-500">
         Badge Minted!
       </h1>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mb-6">
         <h2 className="text-lg font-bold mb-6">{badge}</h2>
-        <div className="w-40 h-40 bg-gray-300 rounded-full mb-10"></div>
-        {/* <img
-                  src="/path_to_success_image"
-                  alt={selectedBadge!}
-                  className="w-40 h-40 object-contain mb-4"
-                /> 이미지 나중에 추가하기 */}
+        <img className="w-40 h-40" src={badgeItem.image + "color.png"} />
       </div>
 
       <button
