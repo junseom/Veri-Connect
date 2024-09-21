@@ -19,8 +19,6 @@ export const Completed = () => {
 
       <Namecard profile={ME} />
 
-      <div className="absolute bottom-0 w-full h-3/5 bg-gray-100 rounded-t-full z-0" />
-
       <button
         onClick={handleNavigateToSearch}
         className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
