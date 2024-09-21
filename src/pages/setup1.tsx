@@ -32,12 +32,19 @@ function Setup1() {
             Connect your wallet
           </label>
           {primaryWallet ? (
-            <button
-              className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-              onClick={handleLogOut}
-            >
-              Log out
-            </button>
+            <div className="w-full flex gap-4">
+              <span className="block p-3 border rounded-lg bg-gray-100">
+                {primaryWallet.address
+                  ? `${primaryWallet.address.slice(0, 30)}...${primaryWallet.address.slice(-4)}`
+                  : ""}
+              </span>
+              <button
+                className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                onClick={handleLogOut}
+              >
+                Log out
+              </button>
+            </div>
           ) : (
             <button
               className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
@@ -54,7 +61,7 @@ function Setup1() {
           <input
             type="text"
             className="w-full p-3 border rounded-lg"
-            placeholder="Ohsho"
+            placeholder="Nickname"
           />
         </div>
         <div className="mb-4">
@@ -64,7 +71,7 @@ function Setup1() {
           <input
             type="text"
             className="w-full p-3 border rounded-lg"
-            placeholder="Student at Korea University in South Korea"
+            placeholder="Affiliation"
           />
         </div>
         <div className="mb-4">
@@ -111,8 +118,8 @@ function Setup1() {
           </label>
           <input
             type="text"
-            className="w-full p-3 border rounded-lg placeholder:text-xs"
-            placeholder="Hello, I'm a project manager from Korea, and a big fan of Shohei Ohtani."
+            className="w-full p-3 border rounded-lg"
+            placeholder="Introduction"
           />
         </div>
 

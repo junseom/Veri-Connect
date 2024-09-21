@@ -45,9 +45,6 @@ const PROFILES: Profile[] = [
   //   image: "/assets/profile3.jpg",
   // },
   {
-    image: "/assets/card/Card_1.png",
-  },
-  {
     image: "/assets/card/Card_2.png",
   },
   {
