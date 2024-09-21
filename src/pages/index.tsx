@@ -7,9 +7,8 @@ export default function SignUpPage() {
 
   const onSign = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // await signIn("worldcoin"); // when worldcoin is the only provider
-
-    router.push("/setup1")
+    await signIn("worldcoin"); // when worldcoin is the only provider
+    router.push("/setup1");
   };
 
   return (
@@ -24,9 +23,11 @@ export default function SignUpPage() {
         className="bg-black text-white p-3 rounded-lg flex items-center justify-center w-full max-w-md hover:bg-gray-800 transition-colors"
       >
         <Image
+          width={24}
+          height={24}
           src="https://www.worldcoin.org/_next/image?url=%2Fassets%2Fworld-id%2Ficon%2Fworld-id-white.svg&w=256&q=75"
           alt="World ID icon"
-          className="h-6 w-6 mr-2"
+          className="mr-2"
         />
         Continue with World ID
       </button>

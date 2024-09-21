@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.WLD_CLIENT_ID,
       clientSecret: process.env.WLD_CLIENT_SECRET,
       idToken: true,
-      checks: ["state", "nonce", "pkce"],
+      // checks: ["state", "nonce", "pkce"],
       profile(profile) {
         return {
           id: profile.sub,
@@ -25,12 +25,12 @@ export const authOptions: NextAuthOptions = {
       },
     },
   ],
-  callbacks: {
-    async jwt({ token }) {
-      token.userRole = "admin";
-      return token;
-    },
-  },
+  // callbacks: {
+  //   async jwt({ token }) {
+  //     token.userRole = "admin";
+  //     return token;
+  //   },
+  // },
   debug: true,
 };
 
