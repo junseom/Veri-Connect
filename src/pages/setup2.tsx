@@ -60,7 +60,7 @@ const Setup2 = () => {
               id="upload"
             />
             {imagePreview ? (
-              <Image
+              <img
                 src={imagePreview}
                 alt="Selected Preview"
                 className="w-full h-full object-cover rounded-lg"

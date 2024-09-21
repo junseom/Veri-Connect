@@ -60,10 +60,10 @@ export const BadgeDetails = ({
   return (
     <Container>
       <div className="w-full h-16 flex items-center px-4">
-        <GoChevronLeft onClick={onBack} size={24} color="#909090" />
+        <GoChevronLeft onClick={onBack} size={24} color="#909090" className="absolute"/>
       </div>
 
-      <div className="flex flex-col flex-1 w-full max-w-md">
+      <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center text-gray-500">
           Mint Your Badge
         </h1>
@@ -77,7 +77,7 @@ export const BadgeDetails = ({
         {selectedBadge === "World ID Badge" ? null : (
           <div className="w-full mb-6">
             <label className="block text-gray-500 mb-2">
-              Upload Passport Picture
+              Upload a Picture to Verify
             </label>
             <div className="border border-gray-300 rounded-lg flex justify-center items-center w-full h-60">
               <input

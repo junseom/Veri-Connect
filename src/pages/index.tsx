@@ -16,7 +16,11 @@ export default function SignUpPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <h1 className="text-6xl font-black text-black mb-20">Veri-Connect</h1>
+      <img
+        src="/assets/logo.png"
+        alt="Veri-Connect Logo"
+        className="w-full max-w-md mb-20"
+      />
       <p className="text-sm text-gray-500 text-center mb-10">
         Would you like to network with people in the crypto industry? <br />
         Connect with great individuals based on the verification of your assets.
