@@ -41,7 +41,7 @@ export const BadgeDetails = ({
 
     // TODO: 준성!!!!!
     const res = await mintBadge(selectedBadge, signer);
-    if(res.txHash){
+    if (res.txHash) {
       // todo: https://amoy.polygonscan.com/tx/0x48f751551673c0a839a0f4b2584ac09e370bcccba2103ff6760d6b72ef789988
       //res.txHash
     }
@@ -49,14 +49,14 @@ export const BadgeDetails = ({
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-50 px-4">
-      <div className="w-full h-16 flex items-center">
-        <button onClick={onBack} className="text-gray-500 mb-4">
-          &larr; Back
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
+      <div className="w-full max-w-md flex items-center">
+        <button onClick={onBack} className="text-gray-500">
+          {"<"}
         </button>
       </div>
 
-      <div className="flex flex-col flex-1 mx-auto w-[600px]">
+      <div className="flex flex-col flex-1 w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center text-gray-500">
           Mint Your Badge
         </h1>
@@ -66,11 +66,11 @@ export const BadgeDetails = ({
           <h2 className="text-lg font-bold mb-6">{selectedBadge}</h2>
         </div>
 
-        <div className="w-full mb-6">
+        {(selectedBadge === "World ID Badge") ? null : (<div className="w-full mb-6">
           <label className="block text-gray-500 mb-2">
             Upload Passport Picture
           </label>
-          <div className="border border-gray-300 rounded-lg flex justify-center items-center w-full h-72">
+          <div className="border border-gray-300 rounded-lg flex justify-center items-center w-full h-60">
             <input
               type="file"
               accept="image/*"
@@ -113,10 +113,10 @@ export const BadgeDetails = ({
               </label>
             )}
           </div>
-        </div>
+        </div>)}
 
         <button
-          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
+          className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
           onClick={mint}
         >
           Mint
