@@ -10,9 +10,10 @@
     "typechain": "typechain --target ethers-v6 --out-dir src/typechain src/abi/*.json"
   },
   "dependencies": {
-    "@ethsign/sp-sdk": "^0.7.5",
     "@dynamic-labs/ethereum": "^3.1.1",
+    "@dynamic-labs/ethers-v6": "^3.1.1",
     "@dynamic-labs/sdk-react-core": "^3.1.1",
+    "@ethsign/sp-sdk": "^0.7.5",
     "@typechain/ethers-v6": "^0.5.1",
     "ethers": "^6.13.2",
     "next": "14.2.13",

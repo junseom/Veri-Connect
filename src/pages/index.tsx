@@ -8,7 +8,8 @@ export default function SignUpPage() {
 
   const onSign = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await signIn("worldcoin"); // when worldcoin is the only provider
+    // const res = await signIn("worldcoin"); // when worldcoin is the only provider
+
     router.push("/setup1");
   };
 
@@ -37,4 +38,3 @@ export default function SignUpPage() {
     </div>
   );
 }
-

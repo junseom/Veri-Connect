@@ -15,6 +15,7 @@ export default function Chat() {
     setMsgs((prev) => [...prev, { from: "me", text }]);
   };
 
+
   if (!address || typeof address !== "string") return null;
   return (
     <Container>
