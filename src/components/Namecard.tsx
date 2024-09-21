@@ -9,7 +9,7 @@ export const Namecard = ({ profile }: NamecardProps) => {
     <div className="relative w-full shadow-lg text-white">
       <img
         src={profile.image}
-        alt={`${profile.name}'s profile`}
+        alt={profile.image}
         className="w-full mx-auto object-cover"
       />
       {/* 

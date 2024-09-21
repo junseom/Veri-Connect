@@ -23,7 +23,7 @@ export const Completed = () => {
 
       <button
         onClick={handleNavigateToSearch}
-        className="mt-8 w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
+        className="mt-8 w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors z-10"
       >
         Let&rsquo;s Meet People! 👀
       </button>
