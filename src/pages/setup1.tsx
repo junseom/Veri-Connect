@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 function Setup1() {
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
   const router = useRouter();
+  const {setShowAuthFlow} = useDynamicContext();
 
   const handleGenderSelect = (gender: string) => {
     setSelectedGender(gender);
+  };
+
+  const handleWalletConnect = () => {
+    setShowAuthFlow(true);
   };
 
   const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,7 +26,15 @@ function Setup1() {
         <span className="text-black font-bold">1</span>/3
       </div>
       <h1 className="text-3xl font-bold mb-8 text-center">Make your Profile</h1>
-      <form className="w-full max-w-md">
+      <div className="w-full max-w-md">
+        <div className="mb-4">
+          <label className="block text-gray-500 mb-2">
+            Connect your wallet
+          </label>
+          <button className="w-full p-3 border rounded-lg" onClick={handleWalletConnect}>
+            Connect with Dynamic
+          </button>
+        </div>
         <div className="mb-4">
           <label className="block text-gray-500 mb-2">
             What’s your Nickname?
@@ -97,7 +111,7 @@ function Setup1() {
         >
           Next
         </button>
-      </form>
+      </div>
     </div>
   );
 }

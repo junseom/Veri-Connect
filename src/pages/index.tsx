@@ -1,7 +1,8 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+
+
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -20,7 +21,6 @@ export default function SignUpPage() {
         Connect with great individuals based on the verification of your assets.
       </p>
 
-      <DynamicWidget />
       <button
         onClick={onSign}
         className="bg-black text-white p-3 rounded-lg flex items-center justify-center w-full max-w-md hover:bg-gray-800 transition-colors"
