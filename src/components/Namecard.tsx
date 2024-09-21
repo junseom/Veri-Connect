@@ -6,13 +6,13 @@ interface NamecardProps {
 
 export const Namecard = ({ profile }: NamecardProps) => {
   return (
-    <div className="relative w-full rounded-xl shadow-lg text-white overflow-hidden">
+    <div className="relative w-full max-w-md rounded-xl shadow-lg text-white overflow-hidden">
       <img
         src={profile.image}
         alt={`${profile.name}'s profile`}
-        className="w-full object-cover"
+        className="w-full max-w-md mx-auto object-cover"
       />
-
+{/* 
       <div className="absolute bottom-4 left-4 right-4">
         <div className="flex gap-4">
           <div className="border-2 p-4 bg-neutral-600/40 flex-[1.2] border-neutral-600 rounded-lg ">
@@ -36,7 +36,7 @@ export const Namecard = ({ profile }: NamecardProps) => {
             <p className="mb-2 text-sm">{profile.description}</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

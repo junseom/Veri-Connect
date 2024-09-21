@@ -14,7 +14,7 @@ export const ME: Profile = {
     "Hello, I'm a project manager from Korea, and I'm a fan of Shohei Ohtani.",
   interests: ["DeFi", "RWA", "Trading"],
   icons: ["/assets/icon1.png", "/assets/icon2.png", "/assets/icon3.png"],
-  image: "/assets/DALLE.png",
+  image: "/assets/card/Card_2.png",
 };
 
 const PROFILES: Profile[] = [
@@ -25,7 +25,7 @@ const PROFILES: Profile[] = [
       "Hi, I'm Skadi. I'm passionate about realizing universal basic income using crypto.",
     interests: ["DeFi", "RWA", "Trading"],
     icons: ["/assets/icon1.png", "/assets/icon2.png", "/assets/icon3.png"],
-    image: "/assets/DALLE.png"
+    image: "/assets/card/Card_1.png"
   },
   {
     name: "Ohsho",
