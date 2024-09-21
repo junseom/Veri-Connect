@@ -31,10 +31,8 @@ export interface VeriConnectInterface extends Interface {
       | "cardOwners"
       | "getMyCards"
       | "getMyOwnedCardIds"
-      | "giveMintPermission"
       | "isApprovedForAll"
-      | "mintCard"
-      | "mintingPermissions"
+      | "mintCardToFriend"
       | "owner"
       | "ownerToCardIds"
       | "registerCard"
@@ -79,20 +77,12 @@ export interface VeriConnectInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "giveMintPermission",
-    values: [AddressLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "isApprovedForAll",
     values: [AddressLike, AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "mintCard",
-    values: [BigNumberish, AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "mintingPermissions",
-    values: [BigNumberish, AddressLike]
+    functionFragment: "mintCardToFriend",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -155,16 +145,11 @@ export interface VeriConnectInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "giveMintPermission",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "mintCard", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "mintingPermissions",
+    functionFragment: "mintCardToFriend",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
@@ -373,28 +358,16 @@ export interface VeriConnect extends BaseContract {
 
   getMyOwnedCardIds: TypedContractMethod<[], [bigint[]], "view">;
 
-  giveMintPermission: TypedContractMethod<
-    [friend: AddressLike],
-    [void],
-    "nonpayable"
-  >;
-
   isApprovedForAll: TypedContractMethod<
     [account: AddressLike, operator: AddressLike],
     [boolean],
     "view"
   >;
 
-  mintCard: TypedContractMethod<
-    [cardId: BigNumberish, recipient: AddressLike],
+  mintCardToFriend: TypedContractMethod<
+    [recipient: AddressLike],
     [void],
     "nonpayable"
-  >;
-
-  mintingPermissions: TypedContractMethod<
-    [arg0: BigNumberish, arg1: AddressLike],
-    [boolean],
-    "view"
   >;
 
   owner: TypedContractMethod<[], [string], "view">;
@@ -489,9 +462,6 @@ export interface VeriConnect extends BaseContract {
     nameOrSignature: "getMyOwnedCardIds"
   ): TypedContractMethod<[], [bigint[]], "view">;
   getFunction(
-    nameOrSignature: "giveMintPermission"
-  ): TypedContractMethod<[friend: AddressLike], [void], "nonpayable">;
-  getFunction(
     nameOrSignature: "isApprovedForAll"
   ): TypedContractMethod<
     [account: AddressLike, operator: AddressLike],
@@ -499,19 +469,8 @@ export interface VeriConnect extends BaseContract {
     "view"
   >;
   getFunction(
-    nameOrSignature: "mintCard"
-  ): TypedContractMethod<
-    [cardId: BigNumberish, recipient: AddressLike],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
-    nameOrSignature: "mintingPermissions"
-  ): TypedContractMethod<
-    [arg0: BigNumberish, arg1: AddressLike],
-    [boolean],
-    "view"
-  >;
+    nameOrSignature: "mintCardToFriend"
+  ): TypedContractMethod<[recipient: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;

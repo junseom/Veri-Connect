@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { WorldCoinBadgeModal } from "./WorldCoinBadgeModal";
 import BADGES from "./badges.config";
 import Container from "../layout/Container";
