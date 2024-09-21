@@ -2,6 +2,8 @@ import CONTRACTS from "@/configs";
 import { VeriConnect__factory } from "@/typechain";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { getSigner } from "@dynamic-labs/ethers-v6";
+import { Namecard } from "../Namecard";
+import { ME } from "@/configs/profiles";
 interface GivePermissionMsgProps {
   friendAddr: string;
 }
@@ -22,6 +24,10 @@ export const SendNamecardMsg = ({ friendAddr }: GivePermissionMsgProps) => {
       <p className="text-left">
         Please sign on your wallet to mint your name card NFT to your friend.
       </p>
+
+      <div className="my-4">
+        <Namecard profile={ME} />
+      </div>
 
       <button
         onClick={onSendCard}

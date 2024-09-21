@@ -1,4 +1,4 @@
-import { SendNamecardMsg } from "./GivePermission";
+import { SendNamecardMsg } from "./SendNamecard";
 
 export interface MSG {
   from: "me" | "you";

@@ -14,7 +14,7 @@ export const ME: Profile = {
   //   "Hello, I'm a project manager from Korea, and I'm a fan of Shohei Ohtani.",
   // interests: ["DeFi", "RWA", "Trading"],
   // icons: ["/assets/icon1.png", "/assets/icon2.png", "/assets/icon3.png"],
-  image: "/assets/card/Card_2.png",
+  image: "/assets/card/Card_1.png",
 };
 
 const PROFILES: Profile[] = [
