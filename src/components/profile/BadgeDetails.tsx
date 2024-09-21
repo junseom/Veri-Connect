@@ -2,11 +2,14 @@ import { useState } from "react";
 import { mintBadge } from "./mint.badge";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { getSigner } from "@dynamic-labs/ethers-v6";
+import { GoChevronLeft } from "react-icons/go";
+import Container from "../layout/Container";
+import { Loading } from "../layout/Loading";
 
 interface BadgeDetailsProps {
   selectedBadge: string;
   onBack: () => void;
-  onMint: () => void;
+  onMint: (txHash: string) => void;
 }
 
 export const BadgeDetails = ({
@@ -34,29 +37,30 @@ export const BadgeDetails = ({
     setImagePreview(null);
   };
 
+  const [isLoading, setIsLoading] = useState(false);
   const mint = async () => {
-    if (!primaryWallet) return;
-    const signer = await getSigner(primaryWallet);
-    console.log(signer);
+    try {
+      if (!primaryWallet) return;
+      setIsLoading(true);
+      const signer = await getSigner(primaryWallet);
 
-    // TODO: 준성!!!!!
-    const res = await mintBadge(selectedBadge, signer);
-    if (res.txHash) {
-      // todo: https://amoy.polygonscan.com/tx/0x48f751551673c0a839a0f4b2584ac09e370bcccba2103ff6760d6b72ef789988
-      //res.txHash
+      const res = await mintBadge(selectedBadge, signer);
+      if (res.txHash) {
+        onMint(res.txHash);
+      }
+    } catch {
+    } finally {
+      setIsLoading(false);
     }
-    onMint();
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
-      <div className="w-full max-w-md flex items-center">
-        <button onClick={onBack} className="text-gray-500">
-          {"<"}
-        </button>
+    <Container>
+      <div className="w-full h-16 flex items-center px-4">
+        <GoChevronLeft onClick={onBack} size={24} color="#909090" />
       </div>
 
-      <div className="flex flex-col flex-1 w-full max-w-md">
+      <div className="flex flex-col flex-1 w-full ">
         <h1 className="text-2xl font-bold mb-4 text-center text-gray-500">
           Mint Your Badge
         </h1>
@@ -66,62 +70,68 @@ export const BadgeDetails = ({
           <h2 className="text-lg font-bold mb-6">{selectedBadge}</h2>
         </div>
 
-        {(selectedBadge === "World ID Badge") ? null : (<div className="w-full mb-6">
-          <label className="block text-gray-500 mb-2">
-            Upload Passport Picture
-          </label>
-          <div className="border border-gray-300 rounded-lg flex justify-center items-center w-full h-60">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="hidden"
-              id="upload"
-            />
-            {imagePreview ? (
-              <img
-                src={imagePreview}
-                alt="Selected Preview"
-                className="w-full h-full object-cover rounded-lg"
-                onClick={handleImageClick}
+        {selectedBadge === "World ID Badge" ? null : (
+          <div className="w-full mb-6">
+            <label className="block text-gray-500 mb-2">
+              Upload Passport Picture
+            </label>
+            <div className="border border-gray-300 rounded-lg flex justify-center items-center w-full h-60">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+                id="upload"
               />
-            ) : (
-              <label
-                htmlFor="upload"
-                className="m-8 cursor-pointer text-gray-500 flex flex-col items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mb-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              {imagePreview ? (
+                <img
+                  src={imagePreview}
+                  alt="Selected Preview"
+                  className="w-full h-full object-cover rounded-lg"
+                  onClick={handleImageClick}
+                />
+              ) : (
+                <label
+                  htmlFor="upload"
+                  className="m-8 cursor-pointer text-gray-500 flex flex-col items-center"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 7v10a4 4 0 004 4h10a4 4 0 004-4V7a4 4 0 00-4-4H7a4 4 0 00-4 4z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M16 11a4 4 0 01-8 0 4 4 0 118 0z"
-                  />
-                </svg>
-              </label>
-            )}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 7v10a4 4 0 004 4h10a4 4 0 004-4V7a4 4 0 00-4-4H7a4 4 0 00-4 4z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M16 11a4 4 0 01-8 0 4 4 0 118 0z"
+                    />
+                  </svg>
+                </label>
+              )}
+            </div>
           </div>
-        </div>)}
+        )}
 
-        <button
-          className="w-full max-w-md bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
-          onClick={mint}
-        >
-          Mint
-        </button>
+        <div className="w-full px-6">
+          <button
+            className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
+            onClick={mint}
+          >
+            Mint
+          </button>
+        </div>
       </div>
-    </div>
+
+      <Loading loading={isLoading} />
+    </Container>
   );
 };

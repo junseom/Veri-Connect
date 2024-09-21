@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { BadgeDetails } from "@/components/profile/BadgeDetails";
 import { BadgeMinted } from "@/components/profile/BadgeMinted";
 import { Completed } from "@/components/profile/Completed";
@@ -10,6 +9,7 @@ const Setup3 = () => {
   const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
   const [mintedBadges, setMintedBadges] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const [txHash, setTxHash] = useState<string | null>(null);
 
   const onSelect = (badge: string) => {
     setSelectedBadge(badge);
@@ -21,6 +21,12 @@ const Setup3 = () => {
     setMintedBadges([...mintedBadges, selectedBadge!]);
     setSelectedBadge(null);
   };
+
+  const onMintBadge = (hash: string) => {
+    setStep(2);
+    setTxHash(hash);
+  };
+
 
   if (!selectedBadge) {
     if (step === 3) return <Completed />;
@@ -38,12 +44,21 @@ const Setup3 = () => {
     return (
       <BadgeDetails
         selectedBadge={selectedBadge}
-        onBack={() => setStep(0)}
-        onMint={() => setStep(2)}
+        onBack={() => {
+          setStep(0);
+          setSelectedBadge(null);
+        }}
+        onMint={onMintBadge}
       />
     );
   } else if (step === 2) {
-    return <BadgeMinted badge={selectedBadge} onSave={onSave} />;
+    return (
+      <BadgeMinted
+        txHash={String(txHash)}
+        badge={selectedBadge}
+        onSave={onSave}
+      />
+    );
   }
   return null;
 };

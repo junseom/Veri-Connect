@@ -17,6 +17,11 @@ export const BadgeList = ({
   isSelected,
   onConfirm,
 }: BadgeListProps) => {
+  const toWorldcoin = () => {
+    closeModal();
+    onSelect("World ID Badge");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4">
       <div className="text-sm text-gray-400 mb-2">
@@ -57,7 +62,7 @@ export const BadgeList = ({
         </button>
       </div>
 
-      {isModalOpen && <WorldCoinBadgeModal onClose={closeModal} />}
+      {isModalOpen && <WorldCoinBadgeModal onClose={toWorldcoin} />}
     </div>
   );
 };
